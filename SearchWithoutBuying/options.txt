@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IC:\Users\stuya\Documents\VuGen\Scripts\SearchWithoutBuying
+-IC:\Program Files (x86)\Micro Focus\LoadRunner\include
+-ec:\users\stuya\documents\vugen\scripts\searchwithoutbuying\\logfile.log
+c:\users\stuya\documents\vugen\scripts\searchwithoutbuying\\combined_SearchWithoutBuying.c
+c:\users\stuya\documents\vugen\scripts\searchwithoutbuying\\pre_cci.c

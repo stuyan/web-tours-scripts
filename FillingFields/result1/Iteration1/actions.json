@@ -1,0 +1,81 @@
+[
+    {
+        "actionName": "Action",
+        "steps": [
+            {
+                "stepId": "STEP1",
+                "stepName": "Url: WebTours",
+                "infFile": "t2.inf",
+                "time": 1600431747890
+            },
+            {
+                "stepId": "STEP2",
+                "stepName": "Submit Data: login.pl",
+                "infFile": "t3.inf",
+                "time": 1600431753525
+            },
+            {
+                "stepId": "STEP3",
+                "stepName": "Url: Search Flights Button",
+                "infFile": "t4.inf",
+                "time": 1600431759133
+            },
+            {
+                "stepId": "STEP4",
+                "stepName": "Submit Data: reservations.pl",
+                "infFile": "t6.inf",
+                "time": 1600431764742
+            },
+            {
+                "stepId": "STEP5",
+                "stepName": "Url: welcome.pl",
+                "infFile": "t7.inf",
+                "time": 1600431770212
+            }
+        ],
+        "transactions": [
+            {
+                "transactionName": "connect",
+                "rawStartTime": 1600431747419,
+                "rawEndTime": 1600431747901,
+                "thinkTime": 0.0,
+                "wastedTime": 0.17507076263427735
+            },
+            {
+                "transactionName": "login",
+                "rawStartTime": 1600431747903,
+                "rawEndTime": 1600431753527,
+                "thinkTime": 5.0006,
+                "wastedTime": 0.0561223030090332
+            },
+            {
+                "transactionName": "flights",
+                "rawStartTime": 1600431753530,
+                "rawEndTime": 1600431759135,
+                "thinkTime": 4.999365,
+                "wastedTime": 0.06469321250915528
+            },
+            {
+                "transactionName": "find_flights",
+                "rawStartTime": 1600431759137,
+                "rawEndTime": 1600431764744,
+                "thinkTime": 5.000015,
+                "wastedTime": 0.04600787162780762
+            },
+            {
+                "transactionName": "logout",
+                "rawStartTime": 1600431764747,
+                "rawEndTime": 1600431770214,
+                "thinkTime": 4.999626,
+                "wastedTime": 0.05318284034729004
+            },
+            {
+                "transactionName": "UC_4_Filling_Fields",
+                "rawStartTime": 1600431747417,
+                "rawEndTime": 1600431770216,
+                "thinkTime": 19.999606,
+                "wastedTime": 0.3950769901275635
+            }
+        ]
+    }
+]

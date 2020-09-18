@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IC:\Users\stuya\Documents\VuGen\Scripts\FillingFields
+-IC:\Program Files (x86)\Micro Focus\LoadRunner\include
+-ec:\users\stuya\documents\vugen\scripts\fillingfields\\logfile.log
+c:\users\stuya\documents\vugen\scripts\fillingfields\\combined_FillingFields.c
+c:\users\stuya\documents\vugen\scripts\fillingfields\\pre_cci.c

@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IC:\Users\stuya\Documents\VuGen\Scripts\BuyingAndItinerary
+-IC:\Program Files (x86)\Micro Focus\LoadRunner\include
+-ec:\users\stuya\documents\vugen\scripts\buyinganditinerary\\logfile.log
+c:\users\stuya\documents\vugen\scripts\buyinganditinerary\\combined_BuyingAndItinerary.c
+c:\users\stuya\documents\vugen\scripts\buyinganditinerary\\pre_cci.c

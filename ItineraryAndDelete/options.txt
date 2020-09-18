@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IC:\Users\stuya\Documents\VuGen\Scripts\ItineraryAndDelete
+-IC:\Program Files (x86)\Micro Focus\LoadRunner\include
+-ec:\users\stuya\documents\vugen\scripts\itineraryanddelete\\logfile.log
+c:\users\stuya\documents\vugen\scripts\itineraryanddelete\\combined_ItineraryAndDelete.c
+c:\users\stuya\documents\vugen\scripts\itineraryanddelete\\pre_cci.c
