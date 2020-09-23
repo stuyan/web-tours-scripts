@@ -1,7 +1,12 @@
+#include <string.h>
+
 Action()
 {
+	int i;
 	int random;
 	int flights_count;
+	int ids_count = 0;
+	int ids_count_after_delete = 0;
 	char flight_index[50];
 	char selected_flight_id[50];
 	
@@ -14,6 +19,10 @@ Action()
 		
 			web_add_auto_header("Upgrade-Insecure-Requests", 
 				"1");
+		
+			web_reg_find("Fail=NotFound",
+			"Text=The document has moved",
+			LAST);
 		
 		/*Correlation comment: Automatic rules - Do not change!  
 		Original value='129609.063345484zzzzHzzpVQfiDDDDtAAAApfQHVHf' 
@@ -97,7 +106,7 @@ Action()
 			
 			web_reg_save_param("flight_id",         
 				"LB=<input type=\"hidden\" name=\"flightID\" value=\"",
-				"RB=\"  />",
+				"RB/DIG=-#",
 				"Ord=ALL",
 				LAST);
 	
@@ -122,6 +131,13 @@ Action()
 		
 		sprintf(selected_flight_id, "{flight_id_%d}", random);
 		lr_save_string(lr_eval_string(selected_flight_id), "selected_flight_id");
+		
+		for (i = 1; i <= flights_count; i++) {
+			sprintf(selected_flight_id, "{flight_id_%d}", i);
+			if (strcmp(lr_eval_string("{selected_flight_id}"), lr_eval_string(selected_flight_id)) == 0) {
+				ids_count++;
+			}
+		}
 	
 		lr_start_transaction("delete");
 	
@@ -130,8 +146,10 @@ Action()
 		
 			lr_think_time(24);
 			
-			web_reg_find("Fail=Found",
-			    "Text={selected_flight_id}",
+			web_reg_save_param("flight_id",         
+				"LB=<input type=\"hidden\" name=\"flightID\" value=\"",
+				"RB/DIG=-#",
+				"Ord=ALL",
 				LAST);
 	
 			web_submit_form("Cancel Button", 
@@ -144,6 +162,22 @@ Action()
 				"Referer=http://localhost:1080/cgi-bin/itinerary.pl", 
 				ENDITEM,
 				LAST);
+			
+			// Мы дважды получаем одну страницу, поэтому значения flight_id задваиваются
+			flights_count = atoi(lr_eval_string("{flight_id_count}")) / 2;
+			
+			for (i = 1; i <= flights_count; i++) {
+				sprintf(selected_flight_id, "{flight_id_%d}", i);
+				if (strcmp(lr_eval_string("{selected_flight_id}"), lr_eval_string(selected_flight_id)) == 0) {
+					ids_count_after_delete++;
+				}
+			}
+			
+			lr_output_message("Before delete: %d, after delete: %d", ids_count, ids_count_after_delete);
+			
+			if ((ids_count - ids_count_after_delete) != 1) {
+				lr_error_message("Flight delete unsuccessful");
+			}
 		
 		lr_end_transaction("delete",LR_AUTO);
 	

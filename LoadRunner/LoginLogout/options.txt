@@ -2,8 +2,8 @@
 -DCCI
 -D_IDA_XL
 -DWINNT
--IC:\Users\stuya\Documents\VuGen\Scripts\LoginLogout
+-ID:\WebToursProject\web-tours-scripts\LoadRunner\LoginLogout
 -IC:\Program Files (x86)\Micro Focus\LoadRunner\include
--ec:\users\stuya\documents\vugen\scripts\loginlogout\\logfile.log
-c:\users\stuya\documents\vugen\scripts\loginlogout\\combined_LoginLogout.c
-c:\users\stuya\documents\vugen\scripts\loginlogout\\pre_cci.c
+-ed:\webtoursproject\web-tours-scripts\loadrunner\loginlogout\\logfile.log
+d:\webtoursproject\web-tours-scripts\loadrunner\loginlogout\\combined_LoginLogout.c
+d:\webtoursproject\web-tours-scripts\loadrunner\loginlogout\\pre_cci.c

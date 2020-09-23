@@ -1,4 +1,4 @@
-# 1 "c:\\users\\stuya\\documents\\vugen\\scripts\\fillingfields\\\\combined_FillingFields.c"
+# 1 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\fillingfields\\\\combined_FillingFields.c"
 # 1 "C:\\Program Files (x86)\\Micro Focus\\LoadRunner\\include/lrun.h" 1
  
  
@@ -966,7 +966,7 @@ int lr_db_getvalue(char * pFirstArg, ...);
 
 
 
-# 1 "c:\\users\\stuya\\documents\\vugen\\scripts\\fillingfields\\\\combined_FillingFields.c" 2
+# 1 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\fillingfields\\\\combined_FillingFields.c" 2
 
 # 1 "C:\\Program Files (x86)\\Micro Focus\\LoadRunner\\include/SharedParameter.h" 1
 
@@ -1132,7 +1132,7 @@ extern VTCERR2  lrvtc_noop();
 
 
 
-# 2 "c:\\users\\stuya\\documents\\vugen\\scripts\\fillingfields\\\\combined_FillingFields.c" 2
+# 2 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\fillingfields\\\\combined_FillingFields.c" 2
 
 # 1 "globals.h" 1
 
@@ -2602,14 +2602,14 @@ long WebSocketReceiveLen0   = sizeof(WebSocketReceive0) - 1;
  
 
 
-# 3 "c:\\users\\stuya\\documents\\vugen\\scripts\\fillingfields\\\\combined_FillingFields.c" 2
+# 3 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\fillingfields\\\\combined_FillingFields.c" 2
 
 # 1 "vuser_init.c" 1
 vuser_init()
 {
 	return 0;
 }
-# 4 "c:\\users\\stuya\\documents\\vugen\\scripts\\fillingfields\\\\combined_FillingFields.c" 2
+# 4 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\fillingfields\\\\combined_FillingFields.c" 2
 
 # 1 "Action.c" 1
 Action()
@@ -2624,6 +2624,10 @@ Action()
 			web_add_auto_header("Upgrade-Insecure-Requests", 
 				"1");
 		
+			web_reg_find("Fail=NotFound",
+			"Text=The document has moved ",
+			"LAST");
+
 		 
 
 
@@ -2791,12 +2795,12 @@ Action()
 
 	return 0;
 }
-# 5 "c:\\users\\stuya\\documents\\vugen\\scripts\\fillingfields\\\\combined_FillingFields.c" 2
+# 5 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\fillingfields\\\\combined_FillingFields.c" 2
 
 # 1 "vuser_end.c" 1
 vuser_end()
 {
 	return 0;
 }
-# 6 "c:\\users\\stuya\\documents\\vugen\\scripts\\fillingfields\\\\combined_FillingFields.c" 2
+# 6 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\fillingfields\\\\combined_FillingFields.c" 2
 

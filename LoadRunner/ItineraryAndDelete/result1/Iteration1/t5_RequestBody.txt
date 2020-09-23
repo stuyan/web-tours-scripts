@@ -1,4 +1,2 @@
-"flightID=251444914-821-JB&flightID=251444875-1588-JB&3=on&flightID=251444914-2360-JB&flightID="
-"251444875-3126-JB&flightID=251444875-3895-JB&flightID=251444914-4668-JB&flightID=251444914-543"
-"7-JB&flightID=251444914-6206-JB&.cgifields=6&.cgifields=3&.cgifields=7&.cgifields=2&.cgifields"
-"=8&.cgifields=1&.cgifields=4&.cgifields=5&removeFlights.x=59&removeFlights.y=12"
+"flightID=251468596-777-JB&2=on&flightID=25146787-158-JB&flightID=251455198-2334-JB&.cgifields="
+"1&.cgifields=3&.cgifields=2&removeFlights.x=59&removeFlights.y=12"

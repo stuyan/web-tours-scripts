@@ -15,6 +15,10 @@ Action()
 			web_add_auto_header("Upgrade-Insecure-Requests", 
 				"1");
 		
+			web_reg_find("Fail=NotFound",
+			"Text=The document has moved",
+			LAST);
+
 		/*Correlation comment: Automatic rules - Do not change!  
 		Original value='129609.170595383zzzzHHVpHVcftAAAApzDAcHf' 
 		Name ='userSession' 

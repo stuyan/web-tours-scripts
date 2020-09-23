@@ -1,4 +1,4 @@
-# 1 "c:\\users\\stuya\\documents\\vugen\\scripts\\itineraryanddelete\\\\combined_ItineraryAndDelete.c"
+# 1 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\itineraryanddelete\\\\combined_ItineraryAndDelete.c"
 # 1 "C:\\Program Files (x86)\\Micro Focus\\LoadRunner\\include/lrun.h" 1
  
  
@@ -966,7 +966,7 @@ int lr_db_getvalue(char * pFirstArg, ...);
 
 
 
-# 1 "c:\\users\\stuya\\documents\\vugen\\scripts\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
+# 1 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
 
 # 1 "C:\\Program Files (x86)\\Micro Focus\\LoadRunner\\include/SharedParameter.h" 1
 
@@ -1132,7 +1132,7 @@ extern VTCERR2  lrvtc_noop();
 
 
 
-# 2 "c:\\users\\stuya\\documents\\vugen\\scripts\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
+# 2 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
 
 # 1 "globals.h" 1
 
@@ -2602,20 +2602,145 @@ long WebSocketReceiveLen0   = sizeof(WebSocketReceive0) - 1;
  
 
 
-# 3 "c:\\users\\stuya\\documents\\vugen\\scripts\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
+# 3 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
 
 # 1 "vuser_init.c" 1
 vuser_init()
 {
 	return 0;
 }
-# 4 "c:\\users\\stuya\\documents\\vugen\\scripts\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
+# 4 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
 
 # 1 "Action.c" 1
+# 1 "C:\\Program Files (x86)\\Micro Focus\\LoadRunner\\include/string.h" 1
+ 
+
+
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Micro Focus\\LoadRunner\\include/stddef.h" 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef unsigned int uintptr_t;
+
+
+
+
+
+
+
+
+typedef int intptr_t;
+
+
+
+
+
+
+
+
+typedef int ptrdiff_t;
+
+
+
+
+
+typedef unsigned short wchar_t;
+
+
+
+
+typedef long time_t;
+
+
+
+
+typedef long clock_t;
+
+
+
+
+typedef wchar_t wint_t;
+typedef wchar_t wctype_t;
+
+
+
+
+typedef char *	va_list;
+
+
+
+ 
+
+
+
+
+
+# 10 "C:\\Program Files (x86)\\Micro Focus\\LoadRunner\\include/string.h" 2
+
+
+
+
+
+
+
+
+
+
+void *	 memchr(const void *, int, size_t);
+int 	 memcmp(const void *, const void *, size_t);
+void * 	 memcpy(void *, const void *, size_t);
+void *	 memmove(void *, const void *, size_t);
+void *	 memset(void *, int, size_t);
+
+char 	*strcat(char *, const char *);
+char 	*strchr(const char *, int);
+int	 strcmp(const char *, const char *);
+int	 strcoll(const char *, const char *);
+char 	*strcpy(char *, const char *);
+size_t	 strcspn(const char *, const char *);
+char 	*strerror(int);
+size_t	 strlen(const char *);
+char 	*strncat(char *, const char *, size_t);
+int	 strncmp(const char *, const char *, size_t);
+char 	*strncpy(char *, const char *, size_t);
+char 	*strpbrk(const char *, const char *);
+char 	*strrchr(const char *, int);
+size_t	 strspn(const char *, const char *);
+char 	*strstr(const char *, const char *);
+char 	*strtok(char *, const char *);
+
+void *	 memccpy(void *, const void *, int, size_t);
+int	 strcmpi(const char *, const char *);
+char 	*strdup(const char *);
+int	 strnicmp(const char *, const char *, size_t);
+void	 swab(const char *, char *, size_t);
+
+# 1 "Action.c" 2
+
+
 Action()
 {
+	int i;
 	int random;
 	int flights_count;
+	int ids_count = 0;
+	int ids_count_after_delete = 0;
 	char flight_index[50];
 	char selected_flight_id[50];
 	
@@ -2628,6 +2753,10 @@ Action()
 		
 			web_add_auto_header("Upgrade-Insecure-Requests", 
 				"1");
+		
+			web_reg_find("Fail=NotFound",
+			"Text=The document has moved",
+			"LAST");
 		
 		 
 
@@ -2711,7 +2840,7 @@ Action()
 			
 			web_reg_save_param("flight_id",         
 				"LB=<input type=\"hidden\" name=\"flightID\" value=\"",
-				"RB=\"  />",
+				"RB/DIG=-#",
 				"Ord=ALL",
 				"LAST");
 	
@@ -2736,6 +2865,13 @@ Action()
 		
 		sprintf(selected_flight_id, "{flight_id_%d}", random);
 		lr_save_string(lr_eval_string(selected_flight_id), "selected_flight_id");
+		
+		for (i = 1; i <= flights_count; i++) {
+			sprintf(selected_flight_id, "{flight_id_%d}", i);
+			if (strcmp(lr_eval_string("{selected_flight_id}"), lr_eval_string(selected_flight_id)) == 0) {
+				ids_count++;
+			}
+		}
 	
 		lr_start_transaction("delete");
 	
@@ -2744,8 +2880,10 @@ Action()
 		
 			lr_think_time(24);
 			
-			web_reg_find("Fail=Found",
-			    "Text={selected_flight_id}",
+			web_reg_save_param("flight_id",         
+				"LB=<input type=\"hidden\" name=\"flightID\" value=\"",
+				"RB/DIG=-#",
+				"Ord=ALL",
 				"LAST");
 	
 			web_submit_form("Cancel Button", 
@@ -2758,6 +2896,22 @@ Action()
 				"Referer=http://localhost:1080/cgi-bin/itinerary.pl", 
 				"ENDITEM",
 				"LAST");
+			
+			 
+			flights_count = atoi(lr_eval_string("{flight_id_count}")) / 2;
+			
+			for (i = 1; i <= flights_count; i++) {
+				sprintf(selected_flight_id, "{flight_id_%d}", i);
+				if (strcmp(lr_eval_string("{selected_flight_id}"), lr_eval_string(selected_flight_id)) == 0) {
+					ids_count_after_delete++;
+				}
+			}
+			
+			lr_output_message("Before delete: %d, after delete: %d", ids_count, ids_count_after_delete);
+			
+			if ((ids_count - ids_count_after_delete) != 1) {
+				lr_error_message("Flight delete unsuccessful");
+			}
 		
 		lr_end_transaction("delete",2);
 	
@@ -2785,12 +2939,12 @@ Action()
 
 	return 0;
 }
-# 5 "c:\\users\\stuya\\documents\\vugen\\scripts\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
+# 5 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
 
 # 1 "vuser_end.c" 1
 vuser_end()
 {
 	return 0;
 }
-# 6 "c:\\users\\stuya\\documents\\vugen\\scripts\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
+# 6 "d:\\webtoursproject\\web-tours-scripts\\loadrunner\\itineraryanddelete\\\\combined_ItineraryAndDelete.c" 2
 
