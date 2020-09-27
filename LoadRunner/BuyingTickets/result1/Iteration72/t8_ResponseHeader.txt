@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Date: Fri, 25 Sep 2020 12:59:58 GMT
+Server: Apache/2.2.21 (Win32)
+Expires: Thu, 24 Sep 2020 12:59:58 GMT
+Set-Cookie: MTUserInfo=firstName&Ur&username&jojo21&address2&125125&hash&113&address1&Moscow%2021&lastName&Urur%0A; path=/
+Keep-Alive: timeout=5, max=90
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=ISO-8859-1
+

@@ -175,6 +175,10 @@ Action()
 			
 			lr_output_message("Before delete: %d, after delete: %d", ids_count, ids_count_after_delete);
 			
+//			if (ids_count == ids_count_after_delete) {
+//				lr_error_message("Flight delete unsuccessful");
+//			}
+			
 			if ((ids_count - ids_count_after_delete) != 1) {
 				lr_error_message("Flight delete unsuccessful");
 			}
